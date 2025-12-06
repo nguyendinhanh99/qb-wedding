@@ -5,7 +5,6 @@ import { motion } from "framer-motion";
 import { Great_Vibes } from "next/font/google";
 import { useSearchParams, useRouter } from "next/navigation";
 
-
 const greatVibes = Great_Vibes({
   subsets: ["latin"],
   weight: ["400"],
@@ -15,7 +14,6 @@ export default function WeddingCard() {
   const router = useRouter();
   const params = useSearchParams();
   const guest = params.get("guest") || "bạn thân mến";
-
 
   return (
     <div className="relative w-screen h-screen overflow-hidden">
@@ -38,42 +36,37 @@ export default function WeddingCard() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6 }}
         className="
-    absolute bottom-0 
-    w-full h-[40%]
-
-    bg-gradient-to-t from-white/25 via-white/10 to-white/0
-    backdrop-blur-xl
-    
-    rounded-t-3xl 
-    shadow-[0_-6px_30px_rgba(0,0,0,0.15)]
-
-    flex flex-col items-center 
-    justify-start
-    pt-3
-    px-6 text-center
-  "
+          absolute bottom-0 
+          w-full h-[40%]
+          bg-gradient-to-t from-white/25 via-white/10 to-white/0
+          backdrop-blur-xl
+          rounded-t-3xl 
+          shadow-[0_-6px_30px_rgba(0,0,0,0.15)]
+          flex flex-col items-center 
+          justify-start
+          pt-3
+          px-6 
+          text-center
+        "
       >
         <h3 className="text-sm tracking-[0.3em] text-gray-700 mb-2">
           HAPPY WEDDING
         </h3>
 
-        <h3
-          className={`text-4xl ${greatVibes.className} leading-tight drop-shadow-md text-[#9d2e2e]`}
-        >
+        <h3 className={`text-4xl ${greatVibes.className} leading-tight drop-shadow-md text-[#9d2e2e]`}>
           Dương Quang
         </h3>
 
         <p className="text-gray-600 text-sm mt-1">AND</p>
 
-        <h3
-          className={`text-4xl ${greatVibes.className} leading-tight drop-shadow-md text-[#9d2e2e]`}
-        >
+        <h3 className={`text-4xl ${greatVibes.className} leading-tight drop-shadow-md text-[#9d2e2e]`}>
           Nguyễn Bắc
         </h3>
 
         {/* Date Section */}
         <div className="w-full flex justify-center mt-2">
-          <div className="flex justify-between w-full max-w-[250px]  pt-4">
+          <div className="flex justify-between w-full max-w-[250px] pt-4">
+            
             {/* Left */}
             <div className="text-center pr-4 border-r">
               <p className="text-[#9d2e2e] text-xs tracking-widest font-semibold">
@@ -96,7 +89,7 @@ export default function WeddingCard() {
               <p className="text-[#9d2e2e] text-xs tracking-widest font-semibold">
                 DECEMBER
               </p>
-              <p className="border-t text-[#9d2e2e] text-lg mt-1 font-bold">
+              <p className="text-[#9d2e2e] border-t text-lg mt-1 font-bold">
                 2025
               </p>
             </div>
@@ -105,9 +98,9 @@ export default function WeddingCard() {
         </div>
       </motion.div>
 
-      {/* ⭐ SWIPE AREA – Vuốt lên để chuyển trang ⭐ */}
+      {/* Swipe Area */}
       <div
-        className="absolute bottom-0 w-full h-15 z-50"
+        className="absolute bottom-0 w-full h-16 z-50"
         onTouchStart={(e) => (window._swipeY = e.touches[0].clientY)}
         onTouchEnd={(e) => {
           const endY = e.changedTouches[0].clientY;
