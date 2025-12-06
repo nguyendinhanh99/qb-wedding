@@ -434,7 +434,7 @@ export default function DetailsPage() {
                 <h2 className="font-bold text-2xl mb-4 text-[#9d2e2e]">Album Ảnh</h2>
 
                 {/* Ảnh lớn với hiệu ứng fade */}
-                <div className="relative w-full max-w-3xl mx-auto h-[400px] rounded-2xl overflow-hidden shadow-lg">
+                <div className="relative w-full max-w-3xl mx-auto h-[480px] rounded-2xl overflow-hidden shadow-lg">
                     <AnimatePresence mode="wait">
                         <motion.img
                             key={selected}

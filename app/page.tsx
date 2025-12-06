@@ -62,7 +62,7 @@ export default function WeddingCard() {
           Dương Quang
         </h3>
 
-        <p className="text-gray-600 text-sm mt-1">AND</p>
+        <p className="text-gray-600 text-sm mt-1">&</p>
 
         <h3 className={`text-4xl ${greatVibes.className} leading-tight drop-shadow-md text-[#9d2e2e]`}>
           Nguyễn Bắc
