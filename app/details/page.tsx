@@ -12,10 +12,13 @@ const greatVibes = Great_Vibes({
     weight: ["400"],
 });
 
+interface DetailsPageProps {
+  searchParams: { guest?: string }; // server-side query params
+}
 
 export default function DetailsPage() {
-    const params = useSearchParams();
-    const guest = params.get("guest") || "bạn thân mến";
+  const params = useSearchParams();
+  const guest = params.get("guest") || "bạn thân mến";
 
     const images = [
         "/album1.jpg",
