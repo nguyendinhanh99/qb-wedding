@@ -1,65 +1,128 @@
-import Image from "next/image";
+"use client";
 
-export default function Home() {
+import Image from "next/image";
+import { motion } from "framer-motion";
+import { Great_Vibes } from "next/font/google";
+import { useSearchParams, useRouter } from "next/navigation";
+
+
+const greatVibes = Great_Vibes({
+  subsets: ["latin"],
+  weight: ["400"],
+});
+
+export default function WeddingCard() {
+  const router = useRouter();
+  const params = useSearchParams();
+  const guest = params.get("guest") || "bạn thân mến";
+
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <div className="relative w-screen h-screen overflow-hidden">
+
+      {/* Background */}
+      <Image
+        src="/Card2.png"
+        alt="wedding"
+        fill
+        priority
+        className="object-cover"
+      />
+
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-black/5"></div>
+
+      {/* Bottom Sheet 40% */}
+      <motion.div
+        initial={{ y: 80, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.6 }}
+        className="
+    absolute bottom-0 
+    w-full h-[40%]
+
+    bg-gradient-to-t from-white/25 via-white/10 to-white/0
+    backdrop-blur-xl
+    
+    rounded-t-3xl 
+    shadow-[0_-6px_30px_rgba(0,0,0,0.15)]
+
+    flex flex-col items-center 
+    justify-start
+    pt-3
+    px-6 text-center
+  "
+      >
+        <h3 className="text-sm tracking-[0.3em] text-gray-700 mb-2">
+          HAPPY WEDDING
+        </h3>
+
+        <h3
+          className={`text-4xl ${greatVibes.className} leading-tight drop-shadow-md text-[#9d2e2e]`}
+        >
+          Dương Quang
+        </h3>
+
+        <p className="text-gray-600 text-sm mt-1">AND</p>
+
+        <h3
+          className={`text-4xl ${greatVibes.className} leading-tight drop-shadow-md text-[#9d2e2e]`}
+        >
+          Nguyễn Bắc
+        </h3>
+
+        {/* Date Section */}
+        <div className="w-full flex justify-center mt-2">
+          <div className="flex justify-between w-full max-w-[250px]  pt-4">
+            {/* Left */}
+            <div className="text-center pr-4 border-r">
+              <p className="text-[#9d2e2e] text-xs tracking-widest font-semibold">
+                SUNDAY
+              </p>
+              <p className="text-[#9d2e2e] border-t text-lg mt-1 font-bold">
+                11:00
+              </p>
+            </div>
+
+            {/* Middle */}
+            <div className="text-center px-4 border-r">
+              <p className="text-[#9d2e2e] text-5xl font-extrabold">
+                15
+              </p>
+            </div>
+
+            {/* Right */}
+            <div className="text-center pl-4">
+              <p className="text-[#9d2e2e] text-xs tracking-widest font-semibold">
+                DECEMBER
+              </p>
+              <p className="border-t text-[#9d2e2e] text-lg mt-1 font-bold">
+                2025
+              </p>
+            </div>
+
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
+      </motion.div>
+
+      {/* ⭐ SWIPE AREA – Vuốt lên để chuyển trang ⭐ */}
+      <div
+        className="absolute bottom-0 w-full h-15 z-50"
+        onTouchStart={(e) => (window._swipeY = e.touches[0].clientY)}
+        onTouchEnd={(e) => {
+          const endY = e.changedTouches[0].clientY;
+          if (window._swipeY - endY > 60) {
+            router.push(`/details?guest=${encodeURIComponent(guest)}`);
+          }
+        }}
+      >
+        {/* Thanh kéo */}
+        <div className="w-12 h-1.5 bg-white/70 rounded-full mx-auto mt-3 backdrop-blur-sm shadow-sm" />
+
+        <p className="text-[11px] text-white/80 text-center mt-2 tracking-wider">
+          Vuốt lên để xem thiệp
+        </p>
+      </div>
     </div>
   );
 }
