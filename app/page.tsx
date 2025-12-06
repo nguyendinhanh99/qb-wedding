@@ -4,6 +4,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { Great_Vibes } from "next/font/google";
 import { useSearchParams, useRouter } from "next/navigation";
+import { useRef } from "react";
 
 const greatVibes = Great_Vibes({
   subsets: ["latin"],
@@ -14,6 +15,9 @@ export default function WeddingCard() {
   const router = useRouter();
   const params = useSearchParams();
   const guest = params.get("guest") || "bạn thân mến";
+
+  // ✅ Fix lỗi: dùng ref thay vì window._swipeY
+  const swipeY = useRef(0);
 
   return (
     <div className="relative w-screen h-screen overflow-hidden">
@@ -30,7 +34,7 @@ export default function WeddingCard() {
       {/* Overlay */}
       <div className="absolute inset-0 bg-black/5"></div>
 
-      {/* Bottom Sheet 40% */}
+      {/* Bottom Sheet */}
       <motion.div
         initial={{ y: 80, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
@@ -63,55 +67,40 @@ export default function WeddingCard() {
           Nguyễn Bắc
         </h3>
 
-        {/* Date Section */}
+        {/* Date */}
         <div className="w-full flex justify-center mt-2">
           <div className="flex justify-between w-full max-w-[250px] pt-4">
-            
-            {/* Left */}
             <div className="text-center pr-4 border-r">
-              <p className="text-[#9d2e2e] text-xs tracking-widest font-semibold">
-                SUNDAY
-              </p>
-              <p className="text-[#9d2e2e] border-t text-lg mt-1 font-bold">
-                11:00
-              </p>
+              <p className="text-[#9d2e2e] text-xs tracking-widest font-semibold">SUNDAY</p>
+              <p className="text-[#9d2e2e] border-t text-lg mt-1 font-bold">11:00</p>
             </div>
 
-            {/* Middle */}
             <div className="text-center px-4 border-r">
-              <p className="text-[#9d2e2e] text-5xl font-extrabold">
-                15
-              </p>
+              <p className="text-[#9d2e2e] text-5xl font-extrabold">15</p>
             </div>
 
-            {/* Right */}
             <div className="text-center pl-4">
-              <p className="text-[#9d2e2e] text-xs tracking-widest font-semibold">
-                DECEMBER
-              </p>
-              <p className="text-[#9d2e2e] border-t text-lg mt-1 font-bold">
-                2025
-              </p>
+              <p className="text-[#9d2e2e] text-xs tracking-widest font-semibold">DECEMBER</p>
+              <p className="text-[#9d2e2e] border-t text-lg mt-1 font-bold">2025</p>
             </div>
-
           </div>
         </div>
       </motion.div>
 
-      {/* Swipe Area */}
+      {/* Swipe area */}
       <div
         className="absolute bottom-0 w-full h-16 z-50"
-        onTouchStart={(e) => (window._swipeY = e.touches[0].clientY)}
+        onTouchStart={(e) => {
+          swipeY.current = e.touches[0].clientY;
+        }}
         onTouchEnd={(e) => {
           const endY = e.changedTouches[0].clientY;
-          if (window._swipeY - endY > 60) {
+          if (swipeY.current - endY > 60) {
             router.push(`/details?guest=${encodeURIComponent(guest)}`);
           }
         }}
       >
-        {/* Thanh kéo */}
         <div className="w-12 h-1.5 bg-white/70 rounded-full mx-auto mt-3 backdrop-blur-sm shadow-sm" />
-
         <p className="text-[11px] text-white/80 text-center mt-2 tracking-wider">
           Vuốt lên để xem thiệp
         </p>
