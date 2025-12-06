@@ -436,8 +436,8 @@ export default function DetailsPage() {
                             initial={{ opacity: 0, scale: 1.05 }}
                             animate={{ opacity: 1, scale: 1 }}
                             exit={{ opacity: 0, scale: 0.98 }}
-                            transition={{ duration: 0.4, ease: "easeInOut" }}
-                            className="absolute inset-0 w-full h-full object-contain rounded-2xl bg-[#fffaf9]"
+                            transition={{ duration: 0.8, ease: "easeOut" }}
+                            className="w-full h-full object-cover"
                         />
                     </AnimatePresence>
                 </div>
