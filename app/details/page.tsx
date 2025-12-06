@@ -1,3 +1,5 @@
+
+
 "use client";
 
 import { useSearchParams } from "next/navigation";
@@ -5,11 +7,12 @@ import { Great_Vibes } from "next/font/google";
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 
-
 const greatVibes = Great_Vibes({
     subsets: ["latin"],
     weight: ["400"],
 });
+
+
 export default function DetailsPage() {
     const params = useSearchParams();
     const guest = params.get("guest") || "bạn thân mến";
