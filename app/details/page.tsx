@@ -115,7 +115,7 @@ export default function DetailsPage() {
                     </h3>
                     <p className="text-1xl font-serif font-light text-[#373434] mt-1">
                         Thân Mời                    </p>
-                    <p className="text-1xl font-bold mt-2 mb-2">Bạn {guest} 💕</p>
+                    <p className="text-1xl font-bold mt-2 mb-2">{guest} 💕</p>
                 </div>
             </section>
 
