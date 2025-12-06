@@ -59,7 +59,7 @@ export default function DetailsPage() {
     useEffect(() => {
         const timer = setInterval(() => {
             const now = new Date();
-            const diff = weddingDate - now;
+            const diff = weddingDate.getTime() - now.getTime();
 
             if (diff <= 0) {
                 clearInterval(timer);
