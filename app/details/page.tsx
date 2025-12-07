@@ -409,12 +409,12 @@ export default function DetailsPage() {
                     {/* QR Chú rể */}
                     <div className="flex flex-col items-center">
                         <img
-                            src="/QRCR.png"
+                            src="/QRCR1.png"
                             alt="QR Chú rể"
                             className="w-28 h-28 rounded-lg shadow-md border border-[#9d2e2e]/20"
                         />
                         <p className="text-xs text-[#9d2e2e] mt-1 font-semibold">Dương Kim Quang</p>
-                        <p className="text-xs text-[#9d2e2e] mt-1 font-semibold">0201 0007 02314</p>
+                        <p className="text-xs text-[#9d2e2e] mt-1 font-semibold">VietinBank 0943 284 867</p>
                     </div>
 
                     {/* QR Cô dâu */}
